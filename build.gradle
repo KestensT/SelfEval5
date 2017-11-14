@@ -19,7 +19,6 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
 
-
 idea {
     module {
         excludeDirs += file('.idea')
