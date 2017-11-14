@@ -43,11 +43,11 @@ public class IncidentTest {
     @Test
     public void equals_objectWithSameNameTypeAndDistance_isTrue() throws Exception {
         assertThat(incident).isEqualTo(anIncident()
-        .withName("Auto ongeval")
-        .withDistance("5km")
-        .withType("Files")
-        .withId(5)
-        .build());
+                .withName("Auto ongeval")
+                .withDistance("5km")
+                .withType("Files")
+                .withId(5)
+                .build());
     }
 
     @Test
@@ -94,6 +94,7 @@ public class IncidentTest {
                 .withId(5)
                 .build());
     }
+
     @Test
     public void equals_withNullName_isFalse() throws Exception {
         assertThat(incident).isNotEqualTo(anIncident()
@@ -107,17 +108,17 @@ public class IncidentTest {
     @Test
     public void equals_objectWithOneNullName_isFalse() throws Exception {
         assertThat(anIncident()
-        .withDistance("50km")
-        .withName(null)
-        .withType("Vertraging")
-        .withId(5)
-        .build())
-                .isNotEqualTo(anIncident()
-                .withDistance("50k")
-                .withName("Auto ongeval")
+                .withDistance("50km")
+                .withName(null)
                 .withType("Vertraging")
                 .withId(5)
-                .build());
+                .build())
+                .isNotEqualTo(anIncident()
+                        .withDistance("50k")
+                        .withName("Auto ongeval")
+                        .withType("Vertraging")
+                        .withId(5)
+                        .build());
     }
 
 
@@ -150,6 +151,88 @@ public class IncidentTest {
                         .withDistance(null)
                         .withId(10)
                         .withName("E40")
+                        .build()
+                );
+
+    }
+
+    @Test
+    public void equals_ObjectWithNoNullDistance_IsFalse() throws Exception {
+        assertThat(anIncident()
+                .withDistance(null)
+                .withId(10)
+                .withName("E40")
+                .build())
+                .isNotEqualTo(anIncident()
+                        .withDistance("50km")
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+    }
+
+    @Test
+    public void equals_sameObject_isTrue() throws Exception {
+        assertThat(incident).isEqualTo(incident);
+    }
+
+    @Test
+    public void equals_nullObject_isFalse() throws Exception {
+        assertThat(incident).isNotEqualTo(null);
+    }
+
+    @Test
+    public void equals_ObjectWithOtherName_IsFalse() throws Exception {
+        assertThat(incident).isNotEqualTo(anIncident()
+                .withName("A12")
+                .withDistance("50km")
+                .withId(5)
+                .build());
+    }
+
+    @Test
+    public void equals_ObjectWithBothNullName_isTrue() throws Exception {
+        assertThat(anIncident()
+                .withDistance("5km")
+                .withId(10)
+                .withName(null)
+                .build())
+                .isEqualTo(anIncident()
+                        .withDistance("5km")
+                        .withId(10)
+                        .withName(null)
+                        .build()
+                );
+    }
+
+    @Test
+    public void equals_ObjectWithNoNullName_IsFalse() throws Exception {
+        assertThat(anIncident()
+                .withDistance("50km")
+                .withId(10)
+                .withName(null)
+                .build())
+                .isNotEqualTo(anIncident()
+                        .withDistance("50km")
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+    }
+
+    @Test
+    public void equals_ObjectWithOtherType_isFalse() throws Exception {
+        assertThat(anIncident()
+                .withDistance("50km")
+                .withId(10)
+                .withName("E40")
+                .withType("Files")
+                .build())
+                .isNotEqualTo(anIncident()
+                        .withDistance("20m")
+                        .withId(10)
+                        .withName("E40")
+                        .withType("Ongeval")
                         .build()
                 );
 
