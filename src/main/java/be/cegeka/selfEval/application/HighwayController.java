@@ -26,5 +26,4 @@ public class HighwayController {
                            @RequestParam(value = "distance", required = true) String distance){
         highwayService.addHighway(name, distance);
     }
-
 }

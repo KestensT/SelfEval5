@@ -17,6 +17,4 @@ public class HighwayRepository {
     public void addHighway(Highway highway){
         entityManager.persist(highway);
     }
-
-
 }

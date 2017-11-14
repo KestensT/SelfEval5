@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -33,5 +34,11 @@ public class UserControllerTest {
 
         when(userService.getAllUsers()).thenReturn(Arrays.asList(user1, user2, user3));
         assertThat(userController.getAllUsers()).containsOnly(user1, user2, user3);
+    }
+
+    @Test
+    public void whenAddUser_shouldReturnUserService() throws Exception {
+        userController.addUser("Gerri");
+        Mockito.verify(userService).addUser("Gerri");
     }
 }
