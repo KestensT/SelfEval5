@@ -55,5 +55,5 @@ public class HighwayRepositoryTest {
         assertThat(highwayRepository.getAllHighways()).contains(highway3, highway1);
     }
 
-    
+
 }

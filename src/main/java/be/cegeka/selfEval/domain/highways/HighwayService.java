@@ -17,13 +17,4 @@ public class HighwayService {
         highwayRepository.addHighway(new Highway(name, distance));
     }
 
-
-
-
-
-
-
-
-
-
 }
