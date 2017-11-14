@@ -18,4 +18,14 @@ public class HighwayTest {
     public void getName_shouldReturnName() throws Exception {
         assertThat(highway.getName()).isEqualTo("name");
     }
+
+    @Test
+    public void getDistance_shouldReturnDistance() throws Exception {
+        assertThat(highway.getDistance()).isEqualTo("distance");
+    }
+
+    @Test
+    public void equals_sameObject_isTrue() throws Exception {
+        assertThat(highway).isEqualTo(highway);
+    }
 }
