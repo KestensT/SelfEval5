@@ -52,6 +52,7 @@ public class HighwayTest {
                 .withId(5)
                 .build());
     }
+
     @Test
     public void equals_OtherClass_IsFalse() throws Exception {
         assertThat(highway).isNotEqualTo(new Object());
@@ -74,6 +75,7 @@ public class HighwayTest {
                 .withId(5)
                 .build());
     }
+
     @Test
     public void equals_ObjectWithOtherDistance_IsFalse() throws Exception {
         assertThat(highway).isNotEqualTo(aHighway()
@@ -82,6 +84,79 @@ public class HighwayTest {
                 .withId(5)
                 .build());
     }
+
+    @Test
+    public void equals_ObjectWithNullName_IsFalse() throws Exception {
+        assertThat(highway).isNotEqualTo(aHighway()
+                .withId(10)
+                .withName(null)
+                .withDistance("50km")
+                .build());
+    }
+
+    @Test
+    public void equals_ObjectWithBothNullName_IsTrue() throws Exception {
+        assertThat(aHighway()
+                .withDistance("50km")
+                .withId(10)
+                .withName(null)
+                .build())
+                .isEqualTo(aHighway()
+                        .withDistance("50km")
+                        .withId(10)
+                        .withName(null)
+                        .build()
+                );
+    }
+
+        @Test
+    public void equals_ObjectWithNoNullName_IsFalse() throws Exception {
+        assertThat(aHighway()
+                .withDistance("50km")
+                .withId(10)
+                .withName(null)
+                .build())
+                .isNotEqualTo(aHighway()
+                        .withDistance("50km")
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+    }
+
+    @Test
+    public void equals_ObjectWithOtherDistance_isFalse() throws Exception {
+        assertThat(aHighway()
+                .withDistance("50km")
+                .withId(10)
+                .withName("E40")
+                .build())
+                .isNotEqualTo(aHighway()
+                        .withDistance("20m")
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+
+    }
+
+    @Test
+    public void equals_ObjectWithBothNullDistance_isTrue() throws Exception {
+        assertThat(aHighway()
+                .withDistance(null)
+                .withId(10)
+                .withName("E40")
+                .build())
+                .isEqualTo(aHighway()
+                        .withDistance(null)
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+
+    }
+
+
 
 
 
