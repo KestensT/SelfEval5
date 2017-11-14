@@ -43,4 +43,46 @@ public class HighwayTest {
     public void getId_shouldReturnId() throws Exception {
         assertThat(highway.getId()).isEqualTo(5);
     }
+
+    @Test
+    public void equals_objectWithSameNameAndDistance_isTrue() throws Exception {
+        assertThat(highway).isEqualTo(aHighway()
+                .withName("E40")
+                .withDistance("50km")
+                .withId(5)
+                .build());
+    }
+    @Test
+    public void equals_OtherClass_IsFalse() throws Exception {
+        assertThat(highway).isNotEqualTo(new Object());
+    }
+
+    @Test
+    public void equals_ObjectWithOtherId_IsFalse() throws Exception {
+        assertThat(highway).isNotEqualTo(aHighway()
+                .withName("E40")
+                .withDistance("50km")
+                .withId(1)
+                .build());
+    }
+
+    @Test
+    public void equals_ObjectWithOtherName_IsFalse() throws Exception {
+        assertThat(highway).isNotEqualTo(aHighway()
+                .withName("A12")
+                .withDistance("50km")
+                .withId(5)
+                .build());
+    }
+    @Test
+    public void equals_ObjectWithOtherDistance_IsFalse() throws Exception {
+        assertThat(highway).isNotEqualTo(aHighway()
+                .withName("E40")
+                .withDistance("500km")
+                .withId(5)
+                .build());
+    }
+
+
+
 }
