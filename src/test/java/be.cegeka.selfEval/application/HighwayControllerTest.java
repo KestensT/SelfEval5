@@ -21,7 +21,8 @@ public class HighwayControllerTest {
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
-    @InjectMocks private HighwayController highwayController;
+    @InjectMocks
+    private HighwayController highwayController;
 
     @Mock
     private HighwayService highwayService;

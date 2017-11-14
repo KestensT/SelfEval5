@@ -109,7 +109,7 @@ public class HighwayTest {
                 );
     }
 
-        @Test
+    @Test
     public void equals_ObjectWithNoNullName_IsFalse() throws Exception {
         assertThat(aHighway()
                 .withDistance("50km")
@@ -156,8 +156,18 @@ public class HighwayTest {
 
     }
 
-
-
-
-
+    @Test
+    public void equals_ObjectWithNoNullDistance_IsFalse() throws Exception {
+        assertThat(aHighway()
+                .withDistance(null)
+                .withId(10)
+                .withName("E40")
+                .build())
+                .isNotEqualTo(aHighway()
+                        .withDistance("50km")
+                        .withId(10)
+                        .withName("E40")
+                        .build()
+                );
+    }
 }
