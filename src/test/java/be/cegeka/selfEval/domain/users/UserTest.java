@@ -3,12 +3,18 @@ package be.cegeka.selfEval.domain.users;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import static be.cegeka.selfEval.domain.users.UserTestBuilder.aUser;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTest {
 
     private User user;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Before
     public void setUp() throws Exception {

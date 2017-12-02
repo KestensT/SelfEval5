@@ -1,6 +1,8 @@
 package be.cegeka.selfEval.domain.incidents;
 
 
+import be.cegeka.selfEval.domain.highways.Highway;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,10 @@ public class Incident {
     private String type;
     @Column(name = "DISTANCE")
     private String distance;
+    @ManyToOne
+    @JoinColumn (name = "HIGHWAY_ID")
+    private Highway highway;
+
 
     public Incident() {
     }
@@ -63,5 +69,9 @@ public class Incident {
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (distance != null ? distance.hashCode() : 0);
         return result;
+    }
+
+    public void setHighway(Highway highway) {
+        this.highway = highway;
     }
 }

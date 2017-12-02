@@ -17,4 +17,7 @@ public class HighwayService {
         highwayRepository.addHighway(new Highway(name, distance));
     }
 
+    public Highway getHighwayByID (int id){
+      return highwayRepository.getHighwayByID(id);
+    }
 }

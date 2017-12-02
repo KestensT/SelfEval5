@@ -17,4 +17,8 @@ public class HighwayRepository {
     public void addHighway(Highway highway){
         entityManager.persist(highway);
     }
+
+    public Highway getHighwayByID(int id){
+        return entityManager.createQuery("Select h from Highway h where h.id = :id", Highway.class).setParameter("id", id).getSingleResult(); // :id wordt extern meegegeven
+    }
 }

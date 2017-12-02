@@ -2,7 +2,6 @@ package be.cegeka.selfEval.domain.users;
 
 
 import be.cegeka.selfEval.Application;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,10 +49,5 @@ public class UserRepositoryTest {
     @Test
     public void getAll_shouldReturnAll() throws Exception {
         assertThat(userRepository.getAllUsers()).contains(Seppe, Gerri);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        entityManager.clear();
     }
 }

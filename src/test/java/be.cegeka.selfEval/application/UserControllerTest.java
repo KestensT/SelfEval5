@@ -2,6 +2,7 @@ package be.cegeka.selfEval.application;
 
 import be.cegeka.selfEval.domain.users.User;
 import be.cegeka.selfEval.domain.users.UserService;
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -10,12 +11,15 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import javax.persistence.EntityManager;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 public class UserControllerTest {
+
+    EntityManager entityManager;
 
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
@@ -40,5 +44,10 @@ public class UserControllerTest {
     public void whenAddUser_shouldReturnUserService() throws Exception {
         userController.addUser("Gerri");
         Mockito.verify(userService).addUser("Gerri");
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        entityManager.clear();
     }
 }
