@@ -2,6 +2,7 @@ package be.cegeka.selfEval.domain.incidents;
 
 
 import be.cegeka.selfEval.domain.highways.Highway;
+import be.cegeka.selfEval.domain.users.User;
 
 import javax.persistence.*;
 
@@ -20,8 +21,11 @@ public class Incident {
     @Column(name = "DISTANCE")
     private String distance;
     @ManyToOne
-    @JoinColumn (name = "HIGHWAY_ID")
+    @JoinColumn(name = "HIGHWAY_ID")
     private Highway highway;
+    @OneToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;              // elk reported incident heeft 1 user
 
 
     public Incident() {
@@ -31,6 +35,21 @@ public class Incident {
         this.name = name;
         this.type = type;
         this.distance = distance;
+    }
+
+    public Incident(String name, String type, String distance, Highway highway) {
+        this.name = name;
+        this.type = type;
+        this.distance = distance;
+        this.highway = highway;
+    }
+
+    public Incident(String name, String type, String distance, Highway highway, User user) {
+        this.name = name;
+        this.type = type;
+        this.distance = distance;
+        this.highway = highway;
+        this.user = user;
     }
 
     public int getId() {
@@ -47,6 +66,18 @@ public class Incident {
 
     public String getDistance() {
         return distance;
+    }
+
+    public Highway getHighway() {
+        return highway;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
